@@ -1,7 +1,9 @@
 <h1 align="center"> Control of Access to Natural Spaces</h1>
 
+
 [![Open Source Love](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+[![Code style check](https://github.com/claragubau/control-natural-spaces/actions/workflows/code-style-check.yml/badge.svg)](https://github.com/claragubau/control-natural-spaces/actions/workflows/code-style-check.yml)
 
 ## Motivation
 Aquest projecte está motivat per [Smart Catalonia]( https://participa.challenge.cat/assemblies/agentsrurals). L'objectiu és optimitzar i automatizar el control d'accés a espais naturals.
@@ -12,7 +14,7 @@ Aquest projecte está motivat per [Smart Catalonia]( https://participa.challenge
 - PiCamera
 - Raspberry Pi
 
-### √ös
+### Ús
 Per a instalar el software, runneja el següent script en una Raspberry amb càmera i internet.
 
 ```bash
@@ -27,7 +29,7 @@ On option és un paràmetre per a escollir la estratègia desitjada:
 Aquesta seria la nostra primera opció ja que és la que requereix dispositius amb menys potència. OpenALPR és una llibreria open-source que detecta matrícules que compleix tots els nostres requísits:
 - L'imatge havia de ser processada localment: enviar streamings de vídeo a un servidor i analitzar-los allà és una solució molt poc eficient, a més és una solució que introdueix a la equació la latència de la xarxa lo qual pot fer que tot vagi molt lent.
 - Ha de funcionar amb imatges de baixa qualitat, la idea és fer servir una càmara d'una raspberry.
-- Ha de ser de lliure ús: en aquest cas la llibreria disposa d'una llic√®ncia open source AGPL.
+- Ha de ser de lliure ús: en aquest cas la llibreria disposa d'una llicència open source AGPL.
 
 L'script que realitzaria aquesta opció el podem trobar a [src/openALPR.py](src/openALPR.py).
 
