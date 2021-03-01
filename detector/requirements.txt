@@ -1,0 +1,9 @@
+Cython
+matplotlib
+numpy
+openalpr
+opencv-contrib-python==4.1.0.25
+picamera
+requests
+scikit-image
+tensorflow==1.14.0
