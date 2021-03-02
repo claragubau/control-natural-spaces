@@ -10,6 +10,7 @@ apt-get install -y --no-install-recommends \
        	libatlas-base-dev \
        	libjasper-dev \
       	libqtgui4 \
+	python3-opencv \
       	libqt4-test \
 
 echo "Download tensorflow"
