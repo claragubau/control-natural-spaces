@@ -1,6 +1,5 @@
 import time
 
-import cv2
 import src.log as log_util
 from openalpr import Alpr
 from picamera import PiCamera

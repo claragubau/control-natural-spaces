@@ -22,6 +22,7 @@ parser.add_argument(
     help="Desired webcam resolution in WxH. If the webcam does not support the resolution entered, errors may occur.",
     default="1280x720",
 )
+parser.add_argument("--video", help="Path to the video, just for testing purposes", default=0)
 args = parser.parse_args()
 
 alpr = Alpr("eu", "/etc/openalpr/openalpr.conf", "/usr/share/openalpr/runtimedata")
@@ -62,7 +63,7 @@ frame_rate_calc = 1
 freq = cv2.getTickFrequency()
 
 # Initialize video stream
-video_stream = VideoStream(resolution=(imW, imH)).start()
+video_stream = VideoStream(resolution=(imW, imH), video=args.video).start()
 time.sleep(1)
 
 
@@ -98,8 +99,7 @@ def run(threshold):
             for i in range(len(scores)):
                 if ((scores[i] > threshold) and (scores[i] <= 1.0)) and labels[int(classes[i])] == "car":
                     log_util.info("A Car was detected")
-                    # TODO: check if alpr can work with a numpy array
-                    analysis = alpr.recognize_file()
+                    analysis = alpr.recognize_ndarray(frame)
                     if len(analysis["results"]):
                         number_plate = analysis["results"][0]["plate"]
                         log_util.info("Number plate detected: {}".format(number_plate))
