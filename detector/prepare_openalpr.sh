@@ -2,9 +2,6 @@
 sudo apt-get install libopencv-dev libtesseract-dev git cmake build-essential libleptonica-dev
 sudo apt-get install liblog4cplus-dev libcurl3-dev
 
-# If using the daemon, install beanstalkd
-sudo apt-get install beanstalkd
-
 # Clone the latest code from GitHub
 git clone https://github.com/openalpr/openalpr.git
 
