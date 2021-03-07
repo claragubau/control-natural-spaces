@@ -25,7 +25,7 @@ parser.add_argument(
 parser.add_argument("--video", help="Path to the video, just for testing purposes", default=0)
 args = parser.parse_args()
 
-alpr = Alpr("eu", "/etc/openalpr/openalpr.conf", "/usr/share/openalpr/runtimedata")
+alpr = Alpr("eu", "/etc/openalpr/openalpr.conf", "/usr/share/openalpr/runtime_data")
 
 pkg = importlib.util.find_spec("tflite_runtime")
 if pkg:
@@ -70,7 +70,7 @@ time.sleep(1)
 def run(threshold):
     try:
         while True:
-            time.sleep(5)
+            time.sleep(0.125)
             # Grab frame from video stream
             frame1 = video_stream.read()
 
