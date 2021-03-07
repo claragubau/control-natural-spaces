@@ -24,8 +24,8 @@ On option és un paràmetre per a escollir la estratègia desitjada:
     - **openALPR**: utilitzar OpenALPR
     - **tensorflow**: utilitzar Tensorflow Lite + OpenALPR
 
-## Com funciona?
-### Opció 1: OpenALPR
+### Com funciona?
+#### Opció 1: OpenALPR
 Aquesta seria la nostra primera opció ja que és la que requereix dispositius amb menys potència. OpenALPR és una llibreria open-source que detecta matrícules que compleix tots els nostres requísits:
 - L'imatge havia de ser processada localment: enviar streamings de vídeo a un servidor i analitzar-los allà és una solució molt poc eficient, a més és una solució que introdueix a la equació la latència de la xarxa lo qual pot fer que tot vagi molt lent.
 - Ha de funcionar amb imatges de baixa qualitat, la idea és fer servir una càmara d'una raspberry.
@@ -33,7 +33,7 @@ Aquesta seria la nostra primera opció ja que és la que requereix dispositius a
 
 L'script que realitzaria aquesta opció el podem trobar a [src/openALPR.py](src/openALPR.py).
 
-### Opció 2: Tensorflow Lite + OpenALPR
+#### Opció 2: Tensorflow Lite + OpenALPR
 En el cas de que el nombre de falsos positius fos molt alt, optaríem per a fer servir també una xarxa neuronal convolucional per a detectar primer als cotxes. En aquest cas hem obtat per un detector molt eficient pensat per a ser executat en dispositius mobils, SSD Mobile Net (https://arxiv.org/pdf/1704.04861.pdf). A més, aprofitaríem el fet de que els cotxes son un objecte prou comú per a utilitzar xarxes que ja estan entrenades (i així disminuir costos).
 Un cop detectat el cotxe, llavors hauríem de córrer OpenALPR per a detectar la matrícula del mateix. En el cas de que OpenALPR no detectés cap matrícula (per diverses causes i.e. només es veu una part del cotxe o una branca la està tapant), continuaríem runnejant el model, el qual eventualment detectaria un frame on el cotxe es pot visualitzar completament.
 
@@ -43,7 +43,7 @@ L'script que realitzaria aquesta opció el podem trobar a [src/openALPR_tensorfl
 
 ## Servidor
 El servidor seria l'encarregat de rebre les notificacions i imatges detectades per la IA de les matrícules. Allà es guardarien les imatges i es hostejaria la pàgina web que facilitaria el consum de la informació en temps real.
-## Ús
+### Ús
 
 Recomanem l'ús d'un environment per a treballar de manera isolada, així que començaríem creant-lo i activant-lo:
 ```bash
