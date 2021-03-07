@@ -13,12 +13,12 @@ Aquest projecte está motivat per [Smart Catalonia]( https://participa.challenge
 ### Material
 - PiCamera
 - Raspberry Pi
-
+## Detector
 ### Ús
 Per a instalar el software, runneja el següent script en una Raspberry amb càmera i internet.
 
 ```bash
-source run.sh OPTION
+sudo source run.sh OPTION
 ```
 On option és un paràmetre per a escollir la estratègia desitjada:
     - **openALPR**: utilitzar OpenALPR
@@ -40,3 +40,33 @@ Un cop detectat el cotxe, llavors hauríem de córrer OpenALPR per a detectar la
 El framework per a treballar triat ha estat Tensorflow Lite, una libreria d'aprenentatge profund creada per Google específicament per a fer inferència a dispositius de poca capacitat.
 
 L'script que realitzaria aquesta opció el podem trobar a [src/openALPR_tensorflow.py](src/openALPR_tensorflow.py).
+
+## Servidor
+El servidor seria l'encarregat de rebre les notificacions i imatges detectades per la IA de les matrícules. Allà es guardarien les imatges i es hostejaria la pàgina web que facilitaria el consum de la informació en temps real.
+## Ús
+
+Recomanem l'ús d'un environment per a treballar de manera isolada, així que començaríem creant-lo i activant-lo:
+```bash
+python3 -m venv env
+source env/bin/activate
+```
+Llavors instal·lem les dependències (principalment Flask, el micro web framework que utilitzem per al servidor ):
+```bash
+pip install -r requirements.lock
+```
+
+Un cop tenim les dependències instal·lades, podem executar el programa que estaria runnejant al servidor:
+```python
+python api.py
+```
+
+Aquest servidor té principalment dos endpoints:
+- un **GET** a '/' el qual ens renderitza una pàgina web amb la informació.
+
+![](./docs/website.png)
+
+- un **POST** a '/v1/detection' el qual li permet a les raspberries enviar la informació quan un cotxe s'ha detectat. Els paràmetres necessaris son els següents:
+    - "image": un string que representa la imatge en base64.
+    - "plate": un string de la matrícula detectada.
+
+![](./docs/postman.png)
