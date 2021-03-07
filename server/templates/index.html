@@ -6,21 +6,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Detector de matrícules</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+  <meta http-equiv="refresh" content="60"/>
+
+
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    table.center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    th, td {
+      text-align: center;
+      font-size: large;
+      vertical-align: middle;
+    }
+  </style>
+
 </head>
 
 <body>
-	<h1>Matricules detectades</h1>
-  <table style="width:100%">
-  {% for item in tasks %}
-  <tr>
-	<th> {{ item.id }} </th> 
-  	<th> {{ item.title }} </th>
-	<th> {{ item.description }} </th>
-	<th> {{ item.date }} </th>
-  </tr>
-  {% endfor %}
-  </table>
+  <div align="center">
+    <h1>Matrícules detectades</h1>
+    <table>
+      <tr>
+        <th> Matrícula</th>
+        <th> Data</th>
+        <th> Imatge</th>
+      </tr>
+      {% for item in plates %}
+      <tr>
+        <td> <b>{{ item.plate }} </b></td>
+        <td> {{ item.date }} </td>
+        <td> <img src="{{ item.image }}"</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
 </body>
 
 </html>
