@@ -1,3 +1,9 @@
+# Test files
+*png
+*jpg
+*jpeg
+*mp4
+
 # Byte-compiled / optimized / DLL files
 .idea
 .DS_Store
