@@ -23,13 +23,13 @@ def not_found(error):
 def create_plate():
     now = datetime.now()
     date = now.strftime("%d %B %Y %H:%M:%S")
-    plate = request.json['plate']
-    img_data = request.json['image']
+    plate = request.values['plate']
+    img_data = request.values['image']
     
     new_plate = {
-        'plate': request.json['plate'],
+        'plate': plate,
         'date': date,
-        'image': 'data:image/jpeg;base64, {}'.format(img_data)
+        'image': 'data:image/jpg;base64,{}'.format(img_data)
     }
 
     plates.append(new_plate)
