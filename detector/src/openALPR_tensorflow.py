@@ -22,7 +22,6 @@ parser.add_argument(
     help="Desired webcam resolution in WxH. If the webcam does not support the resolution entered, errors may occur.",
     default="1280x720",
 )
-parser.add_argument("--video", help="Path to the video, just for testing purposes", default=0)
 args = parser.parse_args()
 
 alpr = Alpr("eu", "/etc/openalpr/openalpr.conf", "/usr/share/openalpr/runtime_data")
@@ -58,12 +57,9 @@ floating_model = input_details[0]["dtype"] == np.float32
 input_mean = 127.5
 input_std = 127.5
 
-# Initialize frame rate calculation
-frame_rate_calc = 1
-freq = cv2.getTickFrequency()
 
 # Initialize video stream
-video_stream = VideoStream(resolution=(imW, imH), video=args.video).start()
+video_stream = VideoStream(resolution=(imW, imH)).start()
 time.sleep(1)
 
 

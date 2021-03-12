@@ -6,9 +6,9 @@ import cv2
 class VideoStream:
     """Camera object that controls video streaming from the Picamera"""
 
-    def __init__(self, resolution=(1280, 720), video=0):
+    def __init__(self, resolution=(1280, 720)):
         # Initialize the PiCamera and the camera image stream
-        self.stream = cv2.VideoCapture(video)
+        self.stream = cv2.VideoCapture(0)
         self.stream.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*"MJPG"))
         self.stream.set(3, resolution[0])
         self.stream.set(4, resolution[1])
