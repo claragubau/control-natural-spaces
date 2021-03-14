@@ -70,7 +70,7 @@ python api.py
 Aquest servidor té principalment dos endpoints:
 - un **GET** a '/' el qual ens renderitza una pàgina web amb la informació.
 
-![](./docs/website.png)
+![](./docs/api.png)
 
 - un **POST** a '/v1/detection' el qual li permet a les raspberries enviar la informació quan un cotxe s'ha detectat. Els paràmetres necessaris son els següents:
     - "image": un string que representa la imatge en base64.
