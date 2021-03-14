@@ -1,11 +1,10 @@
-import os
-import json
 import time
 import base64
 import requests
+from typing import List
 
 
-def call_api(image_file:str, license_plate:str):
+def call_api(image_file: str, license_plate: str) -> dict:
     with open(image_file, "rb") as img_file:
         img_string = base64.b64encode(img_file.read()) 
     response = None
@@ -15,7 +14,7 @@ def call_api(image_file:str, license_plate:str):
                 "http://192.168.0.15:5000/v1/detection",
                 data={"image": img_string, "plate": license_plate},
             )
-            #assert response.status_code == 201
+            assert response.status_code == 201
             response_dict = response.json()
             return response_dict
         except Exception as e:
@@ -32,4 +31,4 @@ def call_api(image_file:str, license_plate:str):
 
 
 if __name__ == '__main__':
-	call_api('./latest.jpg', 'TEST')
+    call_api('./latest.jpg', 'TEST')
