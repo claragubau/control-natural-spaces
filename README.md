@@ -26,7 +26,7 @@ On option és un paràmetre per a escollir la estratègia desitjada:
 
 ### Com funciona?
 
-![](/Users/adria/DetectorMatricules/docs/testing.png)
+![](./docs/testing.png)
 
 > Aquesta captura forma part d'un grup de vídeos que vam grabar per a fer proves. 
 
