@@ -25,11 +25,18 @@ On option és un paràmetre per a escollir la estratègia desitjada:
     - **tensorflow**: utilitzar Tensorflow Lite + OpenALPR
 
 ### Com funciona?
+
+![](/Users/adria/DetectorMatricules/docs/testing.png)
+
+> Aquest vídeo forma part d'un grup de vídeos que vam grabar per a fer proves. 
+
 #### Opció 1: OpenALPR
 Aquesta seria la nostra primera opció ja que és la que requereix dispositius amb menys potència. OpenALPR és una llibreria open-source que detecta matrícules que compleix tots els nostres requísits:
 - L'imatge havia de ser processada localment: enviar streamings de vídeo a un servidor i analitzar-los allà és una solució molt poc eficient, a més és una solució que introdueix a la equació la latència de la xarxa lo qual pot fer que tot vagi molt lent.
 - Ha de funcionar amb imatges de baixa qualitat, la idea és fer servir una càmara d'una raspberry.
 - Ha de ser de lliure ús: en aquest cas la llibreria disposa d'una llicència open source AGPL.
+
+Per a evitar enviar la mateixa detecció diverses vegades (ja que la càmera analitza diversos frames), realitzem la [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) entre les dues últimes deteccions i especifiquem un threshold de distància mínim.  
 
 L'script que realitzaria aquesta opció el podem trobar a [src/openALPR.py](src/openALPR.py).
 
@@ -39,7 +46,7 @@ Un cop detectat el cotxe, llavors hauríem de córrer OpenALPR per a detectar la
 
 El framework per a treballar triat ha estat Tensorflow Lite, una libreria d'aprenentatge profund creada per Google específicament per a fer inferència a dispositius de poca capacitat.
 
-L'script que realitzaria aquesta opció el podem trobar a [src/openALPR_tensorflow.py](src/openALPR_tensorflow.py).
+L'script que realitzaria aquesta opció el podem trobar a [src/openALPR_tensorflow.py](src/openALPR_tensorflow.py). 
 
 ## Servidor
 El servidor seria l'encarregat de rebre les notificacions i imatges detectades per la IA de les matrícules. Allà es guardarien les imatges i es hostejaria la pàgina web que facilitaria el consum de la informació en temps real.
