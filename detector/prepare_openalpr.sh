@@ -1,6 +1,6 @@
+#!/usr/bin/env bash
 
-sudo apt-get install libopencv-dev libtesseract-dev git cmake build-essential libleptonica-dev
-sudo apt-get install liblog4cplus-dev libcurl3-dev
+sudo apt-get install -y libopencv-dev libtesseract-dev git cmake build-essential libleptonica-dev liblog4cplus-dev libcurl3-dev
 
 # Clone the latest code from GitHub
 git clone https://github.com/openalpr/openalpr.git
