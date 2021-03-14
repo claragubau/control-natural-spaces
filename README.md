@@ -28,7 +28,7 @@ On option és un paràmetre per a escollir la estratègia desitjada:
 
 ![](/Users/adria/DetectorMatricules/docs/testing.png)
 
-> Aquest vídeo forma part d'un grup de vídeos que vam grabar per a fer proves. 
+> Aquesta captura forma part d'un grup de vídeos que vam grabar per a fer proves. 
 
 #### Opció 1: OpenALPR
 Aquesta seria la nostra primera opció ja que és la que requereix dispositius amb menys potència. OpenALPR és una llibreria open-source que detecta matrícules que compleix tots els nostres requísits:
