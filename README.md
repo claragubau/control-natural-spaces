@@ -38,7 +38,7 @@ Aquesta seria la nostra primera opció ja que és la que requereix dispositius a
 
 Per a evitar enviar la mateixa detecció diverses vegades (ja que la càmera analitza diversos frames), realitzem la [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) entre les dues últimes deteccions i especifiquem un threshold de distància mínim.  
 
-L'script que realitzaria aquesta opció el podem trobar a [src/openALPR.py](src/openALPR.py).
+L'script que realitzaria aquesta opció el podem trobar a [src/openALPR.py](https://github.com/claragubau/control-natural-spaces/tree/main/detector/src/openALPR.py).
 
 #### Opció 2: Tensorflow Lite + OpenALPR
 En el cas de que el nombre de falsos positius fos molt alt, optaríem per a fer servir també una xarxa neuronal convolucional per a detectar primer als cotxes. En aquest cas hem obtat per un detector molt eficient pensat per a ser executat en dispositius mobils, SSD Mobile Net (https://arxiv.org/pdf/1704.04861.pdf). A més, aprofitaríem el fet de que els cotxes son un objecte prou comú per a utilitzar xarxes que ja estan entrenades (i així disminuir costos).
@@ -46,7 +46,7 @@ Un cop detectat el cotxe, llavors hauríem de córrer OpenALPR per a detectar la
 
 El framework per a treballar triat ha estat Tensorflow Lite, una libreria d'aprenentatge profund creada per Google específicament per a fer inferència a dispositius de poca capacitat.
 
-L'script que realitzaria aquesta opció el podem trobar a [src/openALPR_tensorflow.py](src/openALPR_tensorflow.py). 
+L'script que realitzaria aquesta opció el podem trobar a [src/openALPR_tensorflow.py](https://github.com/claragubau/control-natural-spaces/tree/main/detector/src/openALPR_tensorflow.py). 
 
 ## Servidor
 El servidor seria l'encarregat de rebre les notificacions i imatges detectades per la IA de les matrícules. Allà es guardarien les imatges i es hostejaria la pàgina web que facilitaria el consum de la informació en temps real.
